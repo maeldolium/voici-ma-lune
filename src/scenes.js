@@ -7,3 +7,10 @@ export function changeScene(scene) {
 export function drawScene(ctx) {
     currentScene.draw(ctx);
 }
+
+export function tapScene(ctx) {
+    const nextScene = currentScene?.onTap?.();
+    if(nextScene){
+        changeScene(nextScene);
+    }
+}
