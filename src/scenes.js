@@ -2,6 +2,7 @@ let currentScene = null;
 
 export function changeScene(scene) {
     currentScene = scene;
+    currentScene.enter?.();
 }
 
 export function drawScene(ctx) {

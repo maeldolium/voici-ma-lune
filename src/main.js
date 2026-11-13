@@ -4,9 +4,12 @@ import { changeScene, drawScene, tapScene } from './scenes.js';
 import { playScene } from './scenes/play.js';
 import { playTitle } from './scenes/title.js';
 
+
+
 initScreen();
 
 loadAssets().then(() => {
+
     changeScene(playTitle);
 
     function loop(timestamp) {
