@@ -5,7 +5,7 @@ export const player = {
     x: 80,
     y: 72,
     width: 16 * PLAYER_SCALE,
-    heigth: 24 * PLAYER_SCALE,
+    height: 24 * PLAYER_SCALE,
     targetX: null,
     targetY: null,
     direction: "face",
@@ -14,14 +14,14 @@ export const player = {
 }
 
 export function drawPlayer(ctx) {
-    ctx.drawImage(getPlayerImage(), Math.round(player.x), Math.round(player.y), player.width, player.heigth);
+    ctx.drawImage(getPlayerImage(), Math.round(player.x), Math.round(player.y), player.width, player.height);
 }
 
 export function setPlayerTarget(x, y, onArrive){
     y = Math.max(FLOOR.top, Math.min(FLOOR.bottom, y));
     x = Math.max(FLOOR.left + player.width / 2, Math.min(FLOOR.right - player.width / 2, x));
     player.targetX = x - player.width / 2;
-    player.targetY = y - player.heigth;
+    player.targetY = y - player.height;
     player.onArrive = onArrive;
 }
 

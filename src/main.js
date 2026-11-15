@@ -1,7 +1,6 @@
 import { initScreen, ctx, canvas } from './screen.js';
 import { loadAssets } from './assets.js';
 import { changeScene, drawScene, tapScene, updateScene } from './scenes.js';
-import { playScene } from './scenes/play.js';
 import { playTitle } from './scenes/title.js';
 
 
@@ -16,7 +15,7 @@ loadAssets().then(() => {
 
     function loop(timestamp) {
 
-        if (!lastTime) {
+        if (lastTime === null) {
             lastTime = timestamp;
         }
 

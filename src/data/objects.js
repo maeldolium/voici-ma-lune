@@ -1,4 +1,4 @@
-import { ordinateur, rio, console, bibliotheque, chaussures } from "../assets.js";
+import { ordinateur, rio, meubleTele, bibliotheque, chaussures } from "../assets.js";
 
 export const OBJECTS = [
     { id: "ordinateur", image: ordinateur, x: 167, y: 96, width: 32, height: 32,
@@ -12,7 +12,7 @@ export const OBJECTS = [
         standX: 85, standY: 170,
         lines: [
             "Lui, c'est Rio, mon chien.",
-            "C'est mon meilleur ami, toujours là\n pour moi.",
+            "C'est mon meilleur ami, toujours là\npour moi.",
             "Il aime autant que moi la montagne.",
         ],
     },
@@ -20,11 +20,11 @@ export const OBJECTS = [
         standX: 35, standY: 80,
         lines: [
             "Ma bibliothèque… elle déborde un peu.",
-            "J'adore lire : de la science-fiction,\n des thrillers…",
+            "J'adore lire : de la science-fiction,\ndes thrillers…",
             "…et un peu de fantasy quand\nj'ai envie de m'évader encore\nplus loin.",
         ],
     },
-    { id: "console", image: console, x: 0, y: 80, width: 32, height: 48,
+    { id: "console", image: meubleTele, x: 0, y: 80, width: 32, height: 48,
         standX: 50, standY: 120,
         lines: [
             "Ma console, mon billet pour\nd'autres mondes.",
