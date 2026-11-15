@@ -19,6 +19,11 @@ export const titre = new Image();
 export const luneBrisee = new Image();
 export const luneTitre = new Image();
 export const fondTitre = new Image();
+export const morceauTitre1 = new Image();
+export const morceauTitre2 = new Image();
+export const morceauTitre3 = new Image();
+export const morceauTitre4 = new Image();
+export const morceauTitre5 = new Image();
 
 // --- Petite lune (32x32) : morceaux seuls et étapes d'assemblage ---
 export const morceauLune1 = new Image();
@@ -50,6 +55,11 @@ export function loadAssets() {
         loadImage(luneBrisee, "style/assets/lune_brisee.png"),
         loadImage(luneTitre, "style/assets/lune_titre.png"),
         loadImage(fondTitre, "style/assets/fond_titre.png"),
+        loadImage(morceauTitre1, "style/assets/morceau1_titre.png"),
+        loadImage(morceauTitre2, "style/assets/morceau2_titre.png"),
+        loadImage(morceauTitre3, "style/assets/morceau3_titre.png"),
+        loadImage(morceauTitre4, "style/assets/morceau4_titre.png"),
+        loadImage(morceauTitre5, "style/assets/morceau5_titre.png"),
 
         loadImage(morceauLune1, "style/assets/Premier_Morceau.png"),
         loadImage(morceauLune2, "style/assets/Deuxieme_Morceau.png"),
