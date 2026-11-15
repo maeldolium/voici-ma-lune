@@ -6,6 +6,9 @@ import { wrapText, drawContinueHint } from "./text.js";
 let lines = null;
 let index = 0;
 let onEnd = null;
+// Effet machine à écrire : nombre de caractères déjà affichés de la réplique courante
+let charsShown = 0;
+const CHARS_PER_SECOND = 40;
 
 const BOX = { x: 4, y: 136, width: 184, height: 52 };
 const TEXT_X = 10;
@@ -17,14 +20,33 @@ export function openDialogue(newLines, callback = null) {
     lines = newLines;
     index = 0;
     onEnd = callback;
+    charsShown = 0;
 }
 
 export function isDialogueOpen() {
     return lines !== null;
 }
 
+// La réplique courante est-elle entièrement affichée ?
+function isLineComplete() {
+    return charsShown >= getText(lines[index]).length;
+}
+
+// À appeler à chaque image (depuis le update de la scène)
+export function updateDialogue(dt) {
+    if (lines === null) return;
+    charsShown += CHARS_PER_SECOND * dt;
+}
+
+// Au tap : si le texte s'écrit encore, on l'affiche d'un coup ;
+// s'il est complet, on passe à la réplique suivante.
 export function nextLines() {
+    if (!isLineComplete()) {
+        charsShown = Infinity;
+        return;
+    }
     index++;
+    charsShown = 0;
     if (index >= lines.length) {
         lines = null;
         // même astuce que pour onArrive : on met le callback de côté avant de l'appeler
@@ -64,10 +86,18 @@ export function drawDialogue(ctx) {
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
 
+    // On découpe le texte complet (pour que les mots ne sautent pas de ligne en cours d'écriture),
+    // puis on n'affiche que les charsShown premiers caractères.
     const rows = wrapText(ctx, getText(line), MAX_TEXT_WIDTH);
+    let remaining = Math.floor(charsShown);
     for (let i = 0; i < rows.length; i++) {
-        ctx.fillText(rows[i], TEXT_X, TEXT_Y + i * LINE_HEIGHT);
+        if (remaining <= 0) break;
+        ctx.fillText(rows[i].slice(0, remaining), TEXT_X, TEXT_Y + i * LINE_HEIGHT);
+        remaining -= rows[i].length;
     }
 
-    drawContinueHint(ctx);
+    // Le triangle n'apparaît que quand la réplique est entièrement écrite
+    if (isLineComplete()) {
+        drawContinueHint(ctx);
+    }
 }

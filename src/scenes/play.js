@@ -4,7 +4,7 @@ import {
     morceauLune1, morceauLune2, morceauLune3, morceauLune4, morceauLune5,
     ensembleLune1, ensembleLune2, ensembleLune3, luneEntiere,
 } from '../assets.js';
-import { drawDialogue, openDialogue, isDialogueOpen, nextLines } from '../dialogue.js';
+import { drawDialogue, openDialogue, isDialogueOpen, nextLines, updateDialogue } from '../dialogue.js';
 import { INTRO, FRAGMENT_FOUND, ALL_FOUND } from '../data/texts.js';
 import { OBJECTS } from '../data/objects.js';
 import { drawPlayer, setPlayerTarget, updatePlayer } from '../player.js';
@@ -80,6 +80,7 @@ export const playScene = {
 
     update(dt) {
         updatePlayer(dt);
+        updateDialogue(dt);
     },
 
     draw(ctx) {
