@@ -8,7 +8,7 @@ import {
 import { drawDialogue, openDialogue, isDialogueOpen, nextLines, updateDialogue } from '../dialogue.js';
 import { INTRO, FRAGMENT_FOUND, ALL_FOUND } from '../data/texts.js';
 import { OBJECTS } from '../data/objects.js';
-import { drawPlayer, setPlayerTarget, updatePlayer } from '../player.js';
+import { player, drawPlayer, setPlayerTarget, updatePlayer } from '../player.js';
 import { game } from '../game.js';
 import { changeScene } from '../scenes.js';
 import { endScene } from './end.js';
@@ -29,8 +29,22 @@ function findObjectAt(x, y) {
     return null;
 }
 
+// Tourne le perso vers l'objet (gauche ou droite).
+// Si l'objet est pile au-dessus ou en dessous, il garde sa direction actuelle.
+function faceObject(obj) {
+    const objCenter = obj.x + obj.width / 2;
+    const playerCenter = player.x + player.width / 2;
+    if (objCenter < playerCenter - 2) {
+        player.direction = "left";
+    } else if (objCenter > playerCenter + 2) {
+        player.direction = "right";
+    }
+}
+
 // Appelée quand le perso arrive devant un objet
 function interact(obj) {
+    faceObject(obj);
+
     // Morceau déjà récupéré : on relit juste le texte
     if (game.found.includes(obj.id)) {
         openDialogue(obj.lines);
