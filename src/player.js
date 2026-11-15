@@ -10,17 +10,19 @@ export const player = {
     targetY: null,
     direction: "face",
     animTimer: 0,
+    onArrive: null,
 }
 
 export function drawPlayer(ctx) {
     ctx.drawImage(getPlayerImage(), Math.round(player.x), Math.round(player.y), player.width, player.heigth);
 }
 
-export function setPlayerTarget(x, y){
+export function setPlayerTarget(x, y, onArrive){
     y = Math.max(FLOOR.top, Math.min(FLOOR.bottom, y));
     x = Math.max(FLOOR.left + player.width / 2, Math.min(FLOOR.right - player.width / 2, x));
     player.targetX = x - player.width / 2;
     player.targetY = y - player.heigth;
+    player.onArrive = onArrive;
 }
 
 export function updatePlayer(dt) {
@@ -41,6 +43,9 @@ export function updatePlayer(dt) {
         player.targetX = null;
         player.targetY = null;
         player.animTimer = 0;
+        const callback = player.onArrive;
+        player.onArrive = null;
+        callback?.();
     } else {
 
         if (dx > 0.5) {

@@ -7,6 +7,6 @@ export const PLAYER_SPEED = 60;
 export const FLOOR = {
     left: 0,
     right: 192,
-    top: 70,
+    top: 76,
     bottom: 190,
 };
