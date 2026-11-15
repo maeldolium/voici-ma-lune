@@ -66,6 +66,9 @@ export function loadAssets() {
         loadImage(morceauLune3, "style/assets/Troisieme_Morceau.png"),
         loadImage(morceauLune4, "style/assets/Quatrieme_Morceau.png"),
         loadImage(morceauLune5, "style/assets/Cinquieme_Morceau.png"),
+        loadImage(ensembleLune1, "style/assets/Premier_Ensemble.png"),
+        loadImage(ensembleLune2, "style/assets/Deuxieme_Ensemble_.png"),
+        loadImage(ensembleLune3, "style/assets/Troisieme_Ensemble.png"),
         loadImage(luneEntiere, "style/assets/Lune_Entiere.png"),
     ]);
 }

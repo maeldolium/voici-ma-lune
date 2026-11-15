@@ -4,6 +4,16 @@ export const INTRO = [
     "Aide-moi à les retrouver :\nchacun te dévoilera un petit\nsecret sur moi.",
 ];
 
+// Ajoutée automatiquement quand on trouve un morceau.
+// {n} et {total} sont remplacés par les bons nombres.
+export const FRAGMENT_FOUND = "Tu as trouvé un morceau de lune ! ({n}/{total})";
+
+// Après le dernier morceau, juste avant l'écran de fin.
+export const ALL_FOUND = [
+    "Tous les morceaux sont réunis !",
+    "Levons les yeux vers le ciel…",
+];
+
 // --- Écran de fin ---
 
 // 1. Sous la lune réparée (une ligne par élément)
