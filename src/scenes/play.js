@@ -1,4 +1,4 @@
-import { canvas } from '../screen.js';
+import { GAME_SIZE } from '../config.js';
 import {
     background,
     morceauLune1, morceauLune2, morceauLune3, morceauLune4, morceauLune5,
@@ -84,7 +84,7 @@ export const playScene = {
     },
 
     draw(ctx) {
-        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(background, 0, 0, GAME_SIZE, GAME_SIZE);
         drawMoonProgress(ctx);
 
         for (const obj of OBJECTS) {
