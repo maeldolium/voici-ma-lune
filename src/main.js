@@ -1,5 +1,6 @@
 import { initScreen, ctx, canvas } from './screen.js';
 import { loadAssets } from './assets.js';
+import { FONT_FAMILY } from './config.js';
 import { changeScene, drawScene, tapScene, updateScene } from './scenes.js';
 import { playTitle } from './scenes/title.js';
 
@@ -7,7 +8,8 @@ import { playTitle } from './scenes/title.js';
 
 initScreen();
 
-loadAssets().then(() => {
+// On attend les images ET la police avant de démarrer (sinon le texte s'affiche d'abord dans une police par défaut)
+Promise.all([loadAssets(), document.fonts.load(`20px "${FONT_FAMILY}"`)]).then(() => {
 
     changeScene(playTitle);
     

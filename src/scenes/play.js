@@ -1,3 +1,4 @@
+import { setFont } from '../text.js';
 import { GAME_SIZE } from '../config.js';
 import {
     background,
@@ -63,7 +64,7 @@ function drawMoonProgress(ctx) {
     }
 
     // Compteur en haut à droite
-    ctx.font = "10px Pixelify Sans";
+    setFont(ctx, 10);
     ctx.textAlign = "right";
     ctx.textBaseline = "top";
     ctx.fillStyle = "rgba(0, 0, 0, 0.5)";

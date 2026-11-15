@@ -1,5 +1,5 @@
 import { GAME_SIZE } from "./config.js";
-import { wrapText, drawContinueHint } from "./text.js";
+import { wrapText, drawContinueHint, setFont } from "./text.js";
 
 // Une réplique est soit une chaîne de caractères,
 // soit un objet { text, image } : l'image s'affiche alors en grand au-dessus de la boîte.
@@ -81,7 +81,7 @@ export function drawDialogue(ctx) {
     ctx.strokeRect(BOX.x + 0.5, BOX.y + 0.5, BOX.width - 1, BOX.height - 1);
 
     // Texte (la police doit être réglée AVANT wrapText, car measureText en dépend)
-    ctx.font = "10px Pixelify Sans";
+    setFont(ctx, 10);
     ctx.fillStyle = "rgb(223, 223, 223)";
     ctx.textAlign = "left";
     ctx.textBaseline = "top";

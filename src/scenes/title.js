@@ -1,3 +1,4 @@
+import { setFont } from '../text.js';
 import {
     fondTitre, luneTitre, luneBrisee, titre,
     morceauTitre1, morceauTitre2, morceauTitre3, morceauTitre4, morceauTitre5,
@@ -47,7 +48,7 @@ function startExplosion() {
 
 function drawPrompt(ctx) {
     if (Math.floor(performance.now() / 600) % 2 !== 0) return;
-    ctx.font = "10px Pixelify Sans";
+    setFont(ctx, 10);
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
     ctx.fillStyle = "rgb(223, 223, 223)";

@@ -1,7 +1,7 @@
 import { fondTitre, luneTitre, morceauTitre1, morceauTitre2, morceauTitre3, morceauTitre4, morceauTitre5 } from '../assets.js';
 import { GAME_SIZE } from '../config.js';
 import { END_THANKS, END_PRESENTATION, END_CREDITS } from '../data/texts.js';
-import { wrapText, drawContinueHint } from '../text.js';
+import { wrapText, drawContinueHint, setFont } from '../text.js';
 
 const PIECES = [morceauTitre1, morceauTitre2, morceauTitre3, morceauTitre4, morceauTitre5];
 
@@ -32,10 +32,10 @@ function drawTextPage(ctx, page) {
     ctx.textBaseline = "top";
     ctx.fillStyle = TEXT_COLOR;
 
-    ctx.font = "14px Pixelify Sans";
+    setFont(ctx, 14);
     ctx.fillText(page.title, GAME_SIZE / 2, 16);
 
-    ctx.font = "10px Pixelify Sans";
+    setFont(ctx, 10);
     let y = 44;
     for (const paragraph of page.paragraphs) {
         for (const row of wrapText(ctx, paragraph, 168)) {
@@ -60,7 +60,7 @@ function drawMoonPhase(ctx) {
 
     ctx.drawImage(luneTitre, 0, 0);
 
-    ctx.font = "12px Pixelify Sans";
+    setFont(ctx, 12);
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
     ctx.fillStyle = TEXT_COLOR;

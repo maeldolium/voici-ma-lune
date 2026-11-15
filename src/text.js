@@ -1,8 +1,15 @@
+import { FONT_FAMILY, FONT_SCALE } from "./config.js";
+
+// Règle la police du jeu. size = taille "de base" (celle qu'on utilisait avec Pixelify Sans).
+export function setFont(ctx, size) {
+    ctx.font = `${Math.round(size * FONT_SCALE)}px "${FONT_FAMILY}"`;
+}
+
 // Outils de texte partagés (dialogue, écran de fin…)
 
 // Découpe un texte en lignes qui tiennent dans maxWidth.
 // Les \n restent possibles pour forcer un retour à la ligne.
-// Attention : régler ctx.font AVANT d'appeler cette fonction (measureText en dépend).
+// Attention : régler la police (setFont) AVANT d'appeler cette fonction (measureText en dépend).
 export function wrapText(ctx, text, maxWidth) {
     const rows = [];
     for (const paragraph of text.split("\n")) {
